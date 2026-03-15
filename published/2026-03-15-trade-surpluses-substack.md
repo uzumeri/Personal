@@ -2,6 +2,8 @@
 
 ### The new U.S. trade policy treats product surpluses as market abuse, reflecting a fundamental misunderstanding of why trade has existed for thousands of years
 
+![Hero Image - Trade vs Tariffs Scale](images/2026-03-15-trade-surpluses-hero.png)
+
 If you listen to the recent rhetoric coming out of Washington regarding international trade, you might be forgiven for thinking that the basic laws of economics have been repealed.
 
 Recently, the Trump administration and its new U.S. Trade Representative, Jamieson Greer, announced a sweeping set of Section 301 investigations targeting 16 major economies. The stated goal? To tackle foreign "abuse" of the global trading system and protect American manufacturing.
@@ -59,3 +61,6 @@ What's your experience with shifting definitions of a market surplus? Have you e
 ---
 
 *Vic Uzumeri writes about market design, technology, and the craft of engineering useful systems. Subscribe at vicuzumeri.substack.com.*
+
+---
+**Substack Tags:** trade, opinion, strategy, economics, policy

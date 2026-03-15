@@ -23,9 +23,12 @@ You may pass either the bare slug or the full filename. The date prefix is optio
 
 2. **Move to `published/`** — if the draft is still in `drafts/`, copy it to `published/YYYY-MM-DD-slug.md` using the date from the YAML frontmatter. Ask the user whether to also remove the original from `drafts/`.
 
-3. **Generate a Substack-ready version** (`YYYY-MM-DD-slug-substack.md` in `published/`):
+3. **Generate a Hero Image** — use your `generate_image` tool to create a minimalist, editorial-style illustration capturing the article's theme. Move the generated image from your artifacts directory to `published/images/YYYY-MM-DD-slug-hero.webp` in the repository (creating the `images/` directory if necessary).
+
+4. **Generate a Substack-ready version** (`YYYY-MM-DD-slug-substack.md` in `published/`):
    - Same content as the source draft with these modifications:
    - **Remove YAML frontmatter** — Substack doesn't use it. Instead, the `title` becomes an H1 at the top (`# Title`). If the frontmatter contains a valuable `summary` or `subtitle`, place it immediately below the title as an H3 (`### Subtitle without trailing period`). This ensures it pastes natively as a subtitle in Substack's rich text editor. If the summary doesn't add value as a subtitle, omit it.
+   - **Insert Hero Image:** Below the subtitle (or title if no subtitle), insert the generated hero image using a markdown image tag: `![Hero Image](images/YYYY-MM-DD-slug-hero.webp)`
    - **Convert tables to bullet lists** — Substack does not render markdown tables. Restructure them as descriptive bullet points or labeled paragraphs.
    - **Use Unicode punctuation** — em-dashes `—`, curly quotes `""''`, ellipses `…`. No HTML entities.
    - **Remove relative links** — replace with absolute URLs where appropriate, or remove if no suitable target exists.
@@ -33,8 +36,9 @@ You may pass either the bare slug or the full filename. The date prefix is optio
    - **Keep:** headings (H2/H3), bold, italic, block quotes, ordered/unordered lists, horizontal rules, absolute links.
    - **End with a discussion CTA** — 1–2 sentences inviting comments or sharing ("What's your experience with this? I'd love to hear your take.").
    - **Add footer:** A brief "About the author" line: *Vic Uzumeri writes about market design, technology, and the craft of engineering useful systems. Subscribe at vicuzumeri.substack.com.*
+   - **Append Substack Tags:** At the very end of the file, add a small section with the tags from the draft's frontmatter to serve as a reminder during the publishing flow (e.g. `---` followed by `**Substack Tags:** tag1, tag2...`). 
 
-4. **Generate a LinkedIn Feed Post** (`YYYY-MM-DD-slug-linkedin-post.txt` in `published/`):
+5. **Generate a LinkedIn Feed Post** (`YYYY-MM-DD-slug-linkedin-post.txt` in `published/`):
    - Plain text only — no markdown, no HTML.
    - 400–500 words.
    - Opening hook in the first 2 lines (shown before LinkedIn's "see more" cut).
@@ -44,7 +48,7 @@ You may pass either the bare slug or the full filename. The date prefix is optio
    - End with: "Full article on my Substack → link in the first comment" or similar phrasing.
    - 3–5 hashtags at the end.
 
-5. **Generate a Facebook Feed Post** (`YYYY-MM-DD-slug-facebook-post.txt` in `published/`):
+6. **Generate a Facebook Feed Post** (`YYYY-MM-DD-slug-facebook-post.txt` in `published/`):
    - Plain text only — no markdown, no HTML.
    - 150–250 words — shorter and warmer than LinkedIn.
    - Slightly more conversational tone — this is a personal account, not a professional network.
@@ -54,7 +58,7 @@ You may pass either the bare slug or the full filename. The date prefix is optio
    - **Include the Substack URL directly in the post body** — Facebook is less punitive about external links than LinkedIn.
    - **No hashtags** — they are ineffective on Facebook.
 
-6. **Generate a Bluesky Post** (`YYYY-MM-DD-slug-bluesky-post.txt` in `published/`):
+7. **Generate a Bluesky Post** (`YYYY-MM-DD-slug-bluesky-post.txt` in `published/`):
    - Plain text only.
    - **Maximum 280 characters** (Bluesky limit is 300, leave room for the link card).
    - 1–2 sentences that capture the core insight.
@@ -62,7 +66,7 @@ You may pass either the bare slug or the full filename. The date prefix is optio
    - No hashtags (Bluesky doesn't use them the same way).
    - Punchy and direct — every character counts.
 
-7. **Confirm** all files are written. Display:
+8. **Confirm** all files are written. Display:
    - The opening paragraph of the Substack version
    - The full LinkedIn feed post for quick review
    - The full Facebook post for quick review
