@@ -25,7 +25,7 @@ You may pass either the bare slug or the full filename. The date prefix is optio
 
 3. **Generate a Substack-ready version** (`YYYY-MM-DD-slug-substack.md` in `published/`):
    - Same content as the source draft with these modifications:
-   - **Remove YAML frontmatter** — Substack doesn't use it. Instead, the title becomes an H1 at the top, and the summary becomes a subtitle line (italic, immediately below the title).
+   - **Remove YAML frontmatter** — Substack doesn't use it. Instead, the `title` becomes an H1 at the top (`# Title`). If the frontmatter contains a valuable `summary` or `subtitle`, place it immediately below the title as an H3 (`### Subtitle without trailing period`). This ensures it pastes natively as a subtitle in Substack's rich text editor. If the summary doesn't add value as a subtitle, omit it.
    - **Convert tables to bullet lists** — Substack does not render markdown tables. Restructure them as descriptive bullet points or labeled paragraphs.
    - **Use Unicode punctuation** — em-dashes `—`, curly quotes `""''`, ellipses `…`. No HTML entities.
    - **Remove relative links** — replace with absolute URLs where appropriate, or remove if no suitable target exists.

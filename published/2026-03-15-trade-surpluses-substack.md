@@ -1,6 +1,6 @@
 # The Strange War on Trade Surpluses
 
-*The new U.S. trade policy treats product surpluses as market abuse, reflecting a fundamental misunderstanding of why trade has existed for thousands of years.*
+### The new U.S. trade policy treats product surpluses as market abuse, reflecting a fundamental misunderstanding of why trade has existed for thousands of years
 
 If you listen to the recent rhetoric coming out of Washington regarding international trade, you might be forgiven for thinking that the basic laws of economics have been repealed.
 
