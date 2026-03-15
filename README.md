@@ -1,19 +1,25 @@
+<!--Copyright (c) 2026 Mustafa Uzumeri. All rights reserved.-->
+
 # VicPersonalBlog
 
-Drafting and staging environment for Vic Uzumeri's personal LinkedIn articles and posts.
+Drafting and staging environment for Vic Uzumeri's personal writing, published to [Substack](https://substack.com/@vicuzumeri).
 
 ## Workflow
 
-| Step | What happens |
-|---|---|
-| **Step 1** | Write source `.md` draft in this repo |
-| **Step 2** | Run `/linkedin-post <slug>` to generate LinkedIn Article + feed post |
+1. **Draft** — write markdown in `drafts/`
+2. **Generate** — run `/substack-post <slug>` to produce Substack-ready article + LinkedIn teaser
+3. **Preview** — run `python scripts/preview.py published/YYYY-MM-DD-slug-substack.md`
+4. **Publish** — copy-paste from browser preview into Substack's editor
+5. **Promote** — post LinkedIn teaser with Substack URL in the first comment
 
-No website publishing — all content goes directly to LinkedIn.
+## Setup
 
-## Commands
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install markdown
+```
 
-- `/linkedin-post <slug>` — generate LinkedIn Article and feed post from an approved draft
-- `/rewrite-post <slug>` — regenerate LinkedIn files after editing a draft
+## Content Firewall
 
-See `GEMINI.md` for full guidelines.
+This repo is for **personal, independent writing** only. DeeperPoint content belongs in the [DeeperPointBlogging](https://github.com/DeeperPoint/DeeperPointBlogging) repo and publishes to [deeperpoint.com/blog](https://deeperpoint.com/blog/).

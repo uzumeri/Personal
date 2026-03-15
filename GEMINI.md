@@ -1,40 +1,68 @@
+<!--Copyright (c) 2026 Mustafa Uzumeri. All rights reserved.-->
+
 # VicPersonalBlog — Gemini Context
 
-This repo is the **drafting and staging environment** for Vic Uzumeri's personal LinkedIn articles and posts.
-
-Unlike DeeperPointBlogging, there is no associated website. All content is published directly to LinkedIn.
+This repo is the **drafting and staging environment** for Vic Uzumeri's personal writing, published to **Substack** and promoted via **LinkedIn**.
 
 ---
 
 ## Publication Channels
 
-| Output | Format | Purpose |
+| Channel | Format | Purpose |
 |---|---|---|
-| `YYYY-MM-DD-slug-linkedin.md` | Markdown | LinkedIn Pulse native article (copy-paste into LinkedIn editor) |
-| `YYYY-MM-DD-slug-linkedin-post.txt` | Plain text | LinkedIn feed post teaser (copy-paste into LinkedIn status update) |
+| **Substack** (`substack.com/@vicuzumeri`) | Rich text (paste from rendered HTML) | Canonical home for all personal writing |
+| **LinkedIn feed post** | Plain text | Teaser post driving traffic to the Substack article |
 
-There is no Step 2 HTML publishing step. The workflow is two steps only:
-
-1. **Draft** — write the source `.md` in this repo
-2. **LinkedIn** — generate Article + feed post for distribution
+**Substack is the single publication target.** LinkedIn Pulse articles are not used — Substack provides superior formatting (tables, code, images) and builds a direct subscriber relationship.
 
 ---
 
-## Drafting Workflow — 2-Step Process
+## Content Firewall
 
-### File Naming Convention
+This repo is for **personal, independent writing** — professional reflections, opinions, and analysis that Vic would write regardless of whether DeeperPoint existed.
 
-```
-YYYY-MM-DD-post-slug.md                ← Step 1: source draft (this repo)
-YYYY-MM-DD-post-slug-linkedin.md       ← Step 2: LinkedIn Article (Pulse format)
-YYYY-MM-DD-post-slug-linkedin-post.txt ← Step 2: LinkedIn feed post (plain text teaser)
-```
+**Rules:**
+- **No DeeperPoint marketing.** You may reference DeeperPoint work as context ("in my work on marketplace design…") but the article must stand on its own merits.
+- **No links to deeperpoint.com** unless genuinely relevant to the reader's interest — and even then, sparingly.
+- **Personal voice.** First person. Opinions welcome. The tone is "practitioner reflecting," not "project promoting."
+- **No cross-posting.** Substack content does not appear on deeperpoint.com. DeeperPoint blog content does not appear on Substack.
 
 ---
 
-### Step 1 — Draft in Markdown (this repo)
+## Repository Structure
 
-Write posts as `.md` files in the root of this repo. Include a YAML-style front matter header:
+```
+VicPersonalBlog/
+├── GEMINI.md                              ← this file
+├── .agent/workflows/
+│   ├── substack-post.md                   ← /substack-post workflow
+│   ├── linkedin-post.md                   ← /linkedin-post (teaser → Substack)
+│   └── rewrite-post.md                    ← /rewrite-post (regenerate derivatives)
+├── scripts/
+│   └── preview.py                         ← render markdown → HTML → browser
+├── drafts/                                ← working drafts (iterative, messy)
+├── published/                             ← final versions with derivatives
+│   ├── YYYY-MM-DD-slug.md                 ← source of truth
+│   ├── YYYY-MM-DD-slug-substack.md        ← Substack-ready version
+│   └── YYYY-MM-DD-slug-linkedin-post.txt  ← LinkedIn feed teaser
+└── README.md
+```
+
+### `drafts/` — Working Space
+
+Place rough drafts, outlines, notes, and half-finished ideas here. Files in `drafts/` are not expected to be complete or polished. Use any naming convention that helps you find things.
+
+### `published/` — Final Versions
+
+When a draft is approved, move it to `published/` with the standard naming convention. Running `/substack-post` generates the derivative files here.
+
+---
+
+## Drafting Workflow — 3-Step Process
+
+### Step 1 — Draft in Markdown
+
+Write posts as `.md` files in `drafts/`. Include a YAML frontmatter header:
 
 ```yaml
 ---
@@ -43,80 +71,93 @@ date: YYYY-MM-DD
 tags: [tag1, tag2, tag3]
 summary: One-sentence summary of the post.
 estimated-read: X min read
-hero-image: images/hero-slug.jpg   ← optional; omit if no cover image
-hero-caption: Caption text         ← optional
 ---
 ```
 
 Write the body in standard Markdown:
-- `##` for section headings
+- `##` for section headings (H2 — Substack renders these well)
 - `**bold**` for key terms
 - `*italic*` for emphasis
-- Unordered and ordered lists as needed
-- `---` for a thematic break before a closing note or signature
+- Unordered and ordered lists
+- Block quotes (`>`) for emphasis or attribution
+- `---` for thematic breaks
 
-Review and edit the `.md` draft before proceeding to Step 2.
+Review and edit the draft. This is the iterative phase — take your time.
 
----
+### Step 2 — Generate Substack + LinkedIn Files
 
-### Step 2 — LinkedIn Distribution
+When the draft is ready, run `/substack-post <slug>`. This:
 
-Generate two LinkedIn files from the approved draft.
+1. Moves the draft to `published/` (if not already there)
+2. Generates a Substack-ready version (`-substack.md`)
+3. Generates a LinkedIn feed post teaser (`-linkedin-post.txt`)
 
-#### 2a — LinkedIn Article (`-linkedin.md`)
+### Step 3 — Publish
 
-A version of the post formatted for **LinkedIn Pulse** (native articles):
+1. Run `python scripts/preview.py published/YYYY-MM-DD-slug-substack.md`
+2. The rendered HTML opens in your browser
+3. Select all → Copy → Paste into Substack's editor
+4. Review formatting in Substack, add cover image if desired, publish
+5. Copy the published Substack URL
+6. Post the LinkedIn teaser, putting the Substack URL in the **first comment** (not the post body — LinkedIn suppresses posts with external links)
 
-- **Header:** Same YAML header as the draft, plus `linkedin-cover: images/hero-slug.jpg` if a cover image was specified.
-- **Length:** Same as the draft, or slightly condensed (trim 10–20% if needed).
-- **H2 headings:** Keep them — LinkedIn Pulse renders headings.
-- **No HTML entities:** Use plain Unicode (em-dashes `—`, curly quotes `""`).
-- **Body images:** Note as `[IMAGE: filename — Caption]` placeholder; add manually in the LinkedIn editor.
-- **No relative links:** There is no personal website, so remove or replace all relative links with context-appropriate full URLs (e.g., a DeeperPoint link → `https://deeperpoint.com/`). If a link is purely internal with no appropriate external destination, remove it.
-- **End with a CTA:** Close with 2–3 sentences inviting engagement ("What's your experience with X?", "I'd be glad to hear your thoughts.").
+### Step 4 — Commit and Push
 
-Filename: `YYYY-MM-DD-slug-linkedin.md`
-
-#### 2b — LinkedIn Feed Post (`-linkedin-post.txt`)
-
-A **stand-alone plain-text social post** (150–250 words):
-
-- **No markdown** — LinkedIn feed does not render markdown.
-- **Opening hook:** First 2 lines shown before "see more" — make them count.
-- **3–5 short paragraphs** separated by blank lines.
-- **Optional emoji** — 1–2 maximum, used purposefully.
-- **End with a CTA + hashtags:** 3–5 hashtags. If the full article is on LinkedIn Pulse, end with a note directing readers to it. Otherwise, end with a question to prompt discussion.
-- **No external URLs are required** since there is no personal website. Link to the LinkedIn Article if publishing one; otherwise end with hashtags only.
-
-Filename: `YYYY-MM-DD-slug-linkedin-post.txt`
-
----
-
-### Step 3 — Commit and Push
-
-Commit both the source draft and all LinkedIn output files together so versions stay in sync.
+Commit the source draft and all derivative files together.
 
 ---
 
 ## Triggering the Workflow
 
-Use slash commands in chat to trigger each step:
-
 | Command | When to use |
 |---|---|
-| `/linkedin-post <slug>` | Approved draft ready → generate LinkedIn Article + feed post |
-| `/rewrite-post <slug>` | Edited the source draft → regenerate LinkedIn files |
+| `/substack-post <slug>` | Approved draft ready → generate Substack + LinkedIn files |
+| `/linkedin-post <slug>` | Regenerate only the LinkedIn teaser from a published post |
+| `/rewrite-post <slug>` | Edited the source → regenerate all derivative files |
 
 Pass either the bare slug or the full filename. Date prefix is optional.
 
 ---
 
+## Substack Formatting Rules
+
+Substack's editor accepts rich-text paste from rendered HTML. It supports:
+
+- ✅ Headings (H2, H3)
+- ✅ Bold, italic, strikethrough
+- ✅ Ordered and unordered lists
+- ✅ Block quotes
+- ✅ Horizontal rules
+- ✅ Links (absolute URLs only)
+- ✅ Images (add manually in Substack editor)
+- ❌ Tables (convert to bullet lists or descriptive text)
+- ❌ Code blocks with syntax highlighting (use plain text formatting)
+- ❌ HTML entities (use Unicode: em-dash `—`, curly quotes `""`)
+
+The `-substack.md` derivative should follow these constraints.
+
+---
+
+## LinkedIn Feed Post Rules
+
+The LinkedIn teaser (`-linkedin-post.txt`) is a **stand-alone plain-text post** (150–250 words):
+
+- **No markdown** — LinkedIn feed does not render markdown
+- **Opening hook:** First 2 lines shown before "see more" — make them count
+- **3–5 short paragraphs** separated by blank lines
+- **Optional emoji** — 1–2 maximum, used purposefully
+- **No Substack URL in the post body** — LinkedIn's algorithm suppresses posts with external links
+- **End with:** "Full article on my Substack → link in the first comment" or similar
+- **Hashtags:** 3–5 at the end (`#Opinion #AI #Strategy` etc.)
+
+---
+
 ## Style and Voice
 
-- **Audience:** Broadly professional — colleagues, peers, people in adjacent fields. Not specific to thin market theory or DeeperPoint (use DeeperPointBlogging for that content).
+- **Audience:** Broadly professional — colleagues, peers, people in adjacent fields. Not specific to thin market theory or DeeperPoint.
 - **Voice:** First-person, conversational, grounded in specific experience. Thoughtful but not academic. Opinions are welcome.
 - **Length:** 400–800 words for articles. Shorter is better if the idea is clear.
-- **Tone:** Personal posts may reference DeeperPoint work where genuinely relevant, but should not read as marketing.
+- **Tone:** Personal. Reflective. Honest. May reference DeeperPoint work where genuinely relevant, but should not read as marketing.
 
 ---
 
@@ -130,7 +171,7 @@ Use consistent tags to track post categories:
 
 ## Copyright
 
-Insert the following at the top of every file:
+Insert the following at the top of every markdown file:
 
 ```
 <!--Copyright (c) 2026 Mustafa Uzumeri. All rights reserved.-->
