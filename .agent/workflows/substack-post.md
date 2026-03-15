@@ -1,10 +1,10 @@
 ---
-description: Generate Substack article and LinkedIn feed teaser from an approved draft
+description: Generate Substack article and social media teasers from an approved draft
 ---
 
-## /substack-post — Draft → Substack + LinkedIn
+## /substack-post — Draft → Substack + Social Teasers
 
-Use this workflow when you have a reviewed and approved draft and want to generate the Substack-ready article and LinkedIn teaser.
+Use this workflow when you have a reviewed and approved draft and want to generate the Substack-ready article and all social media teasers.
 
 ### How to invoke
 
@@ -32,27 +32,49 @@ You may pass either the bare slug or the full filename. The date prefix is optio
    - **Remove code blocks with language identifiers** — Substack renders plain code blocks poorly. Convert to indented plain text if the content is essential, or describe in prose.
    - **Keep:** headings (H2/H3), bold, italic, block quotes, ordered/unordered lists, horizontal rules, absolute links.
    - **End with a discussion CTA** — 1–2 sentences inviting comments or sharing ("What's your experience with this? I'd love to hear your take.").
-   - **Add footer:** A brief "About the author" line: *Vic Uzumeri writes about market design, technology, and the craft of engineering useful systems. Subscribe at substack.com/@vicuzumeri.*
+   - **Add footer:** A brief "About the author" line: *Vic Uzumeri writes about market design, technology, and the craft of engineering useful systems. Subscribe at vicuzumeri.substack.com.*
 
 4. **Generate a LinkedIn Feed Post** (`YYYY-MM-DD-slug-linkedin-post.txt` in `published/`):
    - Plain text only — no markdown, no HTML.
-   - 150–250 words.
+   - 400–500 words.
    - Opening hook in the first 2 lines (shown before LinkedIn's "see more" cut).
-   - 3–5 short paragraphs separated by blank lines.
+   - 5–8 short paragraphs separated by blank lines.
    - Maximum 1–2 emoji, used purposefully.
    - **Do NOT put the Substack URL in the post body** — LinkedIn's algorithm suppresses posts with external links.
    - End with: "Full article on my Substack → link in the first comment" or similar phrasing.
    - 3–5 hashtags at the end.
 
-5. **Confirm** all files are written. Display:
+5. **Generate a Facebook Feed Post** (`YYYY-MM-DD-slug-facebook-post.txt` in `published/`):
+   - Plain text only — no markdown, no HTML.
+   - 150–250 words — shorter and warmer than LinkedIn.
+   - Slightly more conversational tone — this is a personal account, not a professional network.
+   - Opening hook in the first 2 lines.
+   - 3–5 short paragraphs separated by blank lines.
+   - Maximum 1–2 emoji, used purposefully.
+   - **Include the Substack URL directly in the post body** — Facebook is less punitive about external links than LinkedIn.
+   - **No hashtags** — they are ineffective on Facebook.
+
+6. **Generate a Bluesky Post** (`YYYY-MM-DD-slug-bluesky-post.txt` in `published/`):
+   - Plain text only.
+   - **Maximum 280 characters** (Bluesky limit is 300, leave room for the link card).
+   - 1–2 sentences that capture the core insight.
+   - Include the Substack URL — Bluesky will generate a link card preview.
+   - No hashtags (Bluesky doesn't use them the same way).
+   - Punchy and direct — every character counts.
+
+7. **Confirm** all files are written. Display:
    - The opening paragraph of the Substack version
    - The full LinkedIn feed post for quick review
+   - The full Facebook post for quick review
+   - The full Bluesky post for quick review
 
 ---
 
 ### Notes
 
-- If `-substack.md` or `-linkedin-post.txt` files already exist for this slug, ask the user whether to overwrite or skip.
+- If derivative files already exist for this slug, ask the user whether to overwrite or skip.
 - The Substack version is intended for copy-paste: run `python scripts/preview.py published/YYYY-MM-DD-slug-substack.md`, then select-all → copy → paste into Substack's editor.
+- LinkedIn and Facebook teasers are manual copy-paste into the respective platforms.
+- Bluesky posts can be published via script: `python scripts/post_bluesky.py published/YYYY-MM-DD-slug-bluesky-post.txt`
 - Personal voice: first-person, conversational, reflective. This is Vic's independent writing, not DeeperPoint marketing.
 - Images cannot be embedded via paste — note `[IMAGE: description]` placeholders and add manually in Substack's editor.

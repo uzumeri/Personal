@@ -1,10 +1,10 @@
 ---
-description: Rewrite derivative files (Substack article, LinkedIn teaser) after editing a source draft
+description: Rewrite derivative files (Substack, LinkedIn, Facebook, Bluesky) after editing a source draft
 ---
 
 ## /rewrite-post — Regenerate Derivatives After Editing
 
-Use this workflow when you have edited a source `.md` draft in `published/` and want to regenerate the Substack and LinkedIn files to reflect the changes.
+Use this workflow when you have edited a source `.md` draft in `published/` and want to regenerate all derivative files to reflect the changes.
 
 ### How to invoke
 
@@ -24,14 +24,18 @@ You may pass either the bare slug or the full filename. The date prefix is optio
 2. **Check for existing derivative files:**
    - `YYYY-MM-DD-slug-substack.md`
    - `YYYY-MM-DD-slug-linkedin-post.txt`
+   - `YYYY-MM-DD-slug-facebook-post.txt`
+   - `YYYY-MM-DD-slug-bluesky-post.txt`
 
 3. **Confirm with the user** before overwriting existing files.
 
-4. **Regenerate both files** following the same rules as `/substack-post`:
+4. **Regenerate all files** following the same rules as `/substack-post`:
    - Updated Substack article (`-substack.md`) reflecting the edited draft.
    - Updated LinkedIn Feed Post (`-linkedin-post.txt`) reflecting the edited draft.
+   - Updated Facebook Feed Post (`-facebook-post.txt`) reflecting the edited draft.
+   - Updated Bluesky Post (`-bluesky-post.txt`) reflecting the edited draft.
 
-5. **Confirm** both files are rewritten and display a preview of the feed post for quick review.
+5. **Confirm** all files are rewritten and display previews of all social posts for quick review.
 
 ---
 

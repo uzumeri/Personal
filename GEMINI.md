@@ -2,18 +2,20 @@
 
 # VicPersonalBlog — Gemini Context
 
-This repo is the **drafting and staging environment** for Vic Uzumeri's personal writing, published to **Substack** and promoted via **LinkedIn**.
+This repo is the **drafting and staging environment** for Vic Uzumeri's personal writing, published to **Substack** and distributed via **LinkedIn**, **Facebook**, and **Bluesky**.
 
 ---
 
 ## Publication Channels
 
-| Channel | Format | Purpose |
-|---|---|---|
-| **Substack** (`substack.com/@vicuzumeri`) | Rich text (paste from rendered HTML) | Canonical home for all personal writing |
-| **LinkedIn feed post** | Plain text | Teaser post driving traffic to the Substack article |
+| Channel | Format | Purpose | Method |
+| --- | --- | --- | --- |
+| **Substack** (`vicuzumeri.substack.com`) | Rich text (paste from rendered HTML) | Canonical home for all personal writing | Manual copy-paste |
+| **LinkedIn feed post** | Plain text (400–500 words) | Professional teaser driving traffic to Substack | Manual copy-paste |
+| **Facebook feed post** | Plain text (150–250 words) | Personal/casual teaser with direct link | Manual copy-paste |
+| **Bluesky post** | Plain text (≤280 chars) | Short teaser with link card | Script (`post_bluesky.py`) |
 
-**Substack is the single publication target.** LinkedIn Pulse articles are not used — Substack provides superior formatting (tables, code, images) and builds a direct subscriber relationship.
+**Substack is the single publication target.** All other platforms are distribution channels — teasers that point back to the canonical Substack article.
 
 ---
 
@@ -22,6 +24,7 @@ This repo is the **drafting and staging environment** for Vic Uzumeri's personal
 This repo is for **personal, independent writing** — professional reflections, opinions, and analysis that Vic would write regardless of whether DeeperPoint existed.
 
 **Rules:**
+
 - **No DeeperPoint marketing.** You may reference DeeperPoint work as context ("in my work on marketplace design…") but the article must stand on its own merits.
 - **No links to deeperpoint.com** unless genuinely relevant to the reader's interest — and even then, sparingly.
 - **Personal voice.** First person. Opinions welcome. The tone is "practitioner reflecting," not "project promoting."
@@ -31,7 +34,7 @@ This repo is for **personal, independent writing** — professional reflections,
 
 ## Repository Structure
 
-```
+```text
 VicPersonalBlog/
 ├── GEMINI.md                              ← this file
 ├── .agent/workflows/
@@ -39,12 +42,16 @@ VicPersonalBlog/
 │   ├── linkedin-post.md                   ← /linkedin-post (teaser → Substack)
 │   └── rewrite-post.md                    ← /rewrite-post (regenerate derivatives)
 ├── scripts/
-│   └── preview.py                         ← render markdown → HTML → browser
+│   ├── preview.py                         ← render markdown → HTML → browser
+│   └── post_bluesky.py                    ← post to Bluesky via AT Protocol
 ├── drafts/                                ← working drafts (iterative, messy)
 ├── published/                             ← final versions with derivatives
 │   ├── YYYY-MM-DD-slug.md                 ← source of truth
 │   ├── YYYY-MM-DD-slug-substack.md        ← Substack-ready version
-│   └── YYYY-MM-DD-slug-linkedin-post.txt  ← LinkedIn feed teaser
+│   ├── YYYY-MM-DD-slug-linkedin-post.txt  ← LinkedIn feed teaser
+│   ├── YYYY-MM-DD-slug-facebook-post.txt  ← Facebook feed teaser
+│   └── YYYY-MM-DD-slug-bluesky-post.txt   ← Bluesky post (≤280 chars)
+├── .env                                   ← Bluesky credentials (gitignored)
 └── README.md
 ```
 
@@ -58,7 +65,7 @@ When a draft is approved, move it to `published/` with the standard naming conve
 
 ---
 
-## Drafting Workflow — 3-Step Process
+## Drafting Workflow — 4-Step Process
 
 ### Step 1 — Draft in Markdown
 
@@ -75,6 +82,7 @@ estimated-read: X min read
 ```
 
 Write the body in standard Markdown:
+
 - `##` for section headings (H2 — Substack renders these well)
 - `**bold**` for key terms
 - `*italic*` for emphasis
@@ -84,22 +92,22 @@ Write the body in standard Markdown:
 
 Review and edit the draft. This is the iterative phase — take your time.
 
-### Step 2 — Generate Substack + LinkedIn Files
+### Step 2 — Generate All Derivatives
 
 When the draft is ready, run `/substack-post <slug>`. This:
 
 1. Moves the draft to `published/` (if not already there)
 2. Generates a Substack-ready version (`-substack.md`)
 3. Generates a LinkedIn feed post teaser (`-linkedin-post.txt`)
+4. Generates a Facebook feed post (`-facebook-post.txt`)
+5. Generates a Bluesky post (`-bluesky-post.txt`)
 
-### Step 3 — Publish
+### Step 3 — Publish and Distribute
 
-1. Run `python scripts/preview.py published/YYYY-MM-DD-slug-substack.md`
-2. The rendered HTML opens in your browser
-3. Select all → Copy → Paste into Substack's editor
-4. Review formatting in Substack, add cover image if desired, publish
-5. Copy the published Substack URL
-6. Post the LinkedIn teaser, putting the Substack URL in the **first comment** (not the post body — LinkedIn suppresses posts with external links)
+1. **Substack:** Run `python scripts/preview.py published/YYYY-MM-DD-slug-substack.md`, then select-all → copy → paste into Substack's editor. Review, add cover image if desired, publish.
+2. **LinkedIn:** Copy the published Substack URL. Paste the LinkedIn teaser as a feed post. Put the Substack URL in the **first comment** (not the post body).
+3. **Facebook:** Paste the Facebook teaser as a personal post. The Substack URL is already in the text.
+4. **Bluesky:** Run `python scripts/post_bluesky.py published/YYYY-MM-DD-slug-bluesky-post.txt` — or paste manually at bsky.app.
 
 ### Step 4 — Commit and Push
 
@@ -110,8 +118,8 @@ Commit the source draft and all derivative files together.
 ## Triggering the Workflow
 
 | Command | When to use |
-|---|---|
-| `/substack-post <slug>` | Approved draft ready → generate Substack + LinkedIn files |
+| --- | --- |
+| `/substack-post <slug>` | Approved draft ready → generate Substack + all social teasers |
 | `/linkedin-post <slug>` | Regenerate only the LinkedIn teaser from a published post |
 | `/rewrite-post <slug>` | Edited the source → regenerate all derivative files |
 
@@ -138,17 +146,40 @@ The `-substack.md` derivative should follow these constraints.
 
 ---
 
-## LinkedIn Feed Post Rules
+## Social Post Rules
 
-The LinkedIn teaser (`-linkedin-post.txt`) is a **stand-alone plain-text post** (150–250 words):
+### LinkedIn (`-linkedin-post.txt`)
+
+A **stand-alone plain-text post** (400–500 words):
 
 - **No markdown** — LinkedIn feed does not render markdown
 - **Opening hook:** First 2 lines shown before "see more" — make them count
-- **3–5 short paragraphs** separated by blank lines
+- **5–8 short paragraphs** separated by blank lines
 - **Optional emoji** — 1–2 maximum, used purposefully
 - **No Substack URL in the post body** — LinkedIn's algorithm suppresses posts with external links
 - **End with:** "Full article on my Substack → link in the first comment" or similar
 - **Hashtags:** 3–5 at the end (`#Opinion #AI #Strategy` etc.)
+
+### Facebook (`-facebook-post.txt`)
+
+A **shorter, warmer plain-text post** (150–250 words):
+
+- **No markdown** — Facebook renders plain text only
+- **Slightly more conversational** than LinkedIn — this is a personal account
+- **Opening hook** in the first 2 lines
+- **3–5 short paragraphs** separated by blank lines
+- **Optional emoji** — 1–2 maximum
+- **Include the Substack URL directly in the post body** — Facebook is less punitive about links
+- **No hashtags** — they are ineffective on Facebook
+
+### Bluesky (`-bluesky-post.txt`)
+
+A **very short plain-text post** (≤280 characters):
+
+- 1–2 sentences capturing the core insight
+- **Include the Substack URL** — Bluesky generates a link card preview
+- No hashtags
+- Every character counts — be punchy and direct
 
 ---
 
@@ -173,7 +204,7 @@ Use consistent tags to track post categories:
 
 Insert the following at the top of every markdown file:
 
-```
+```text
 <!--Copyright (c) 2026 Mustafa Uzumeri. All rights reserved.-->
 ```
 

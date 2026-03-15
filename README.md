@@ -2,24 +2,52 @@
 
 # VicPersonalBlog
 
-Drafting and staging environment for Vic Uzumeri's personal writing, published to [Substack](https://substack.com/@vicuzumeri).
+Drafting and staging environment for personal writing published on **Substack** and distributed via **LinkedIn**, **Facebook**, and **Bluesky**.
+
+## Quick Start
+
+```bash
+# Set up the Python environment
+python3 -m venv .venv
+source .venv/bin/activate
+pip install markdown
+
+# Preview a draft as styled HTML (for copy-paste into Substack)
+python scripts/preview.py published/YYYY-MM-DD-slug-substack.md
+```
+
+## Bluesky Setup (optional)
+
+1. Go to [bsky.app/settings/app-passwords](https://bsky.app/settings/app-passwords)
+2. Create a new App Password (do NOT use your main password)
+3. Create a `.env` file in the repo root:
+
+```bash
+BLUESKY_HANDLE=your-handle.bsky.social
+BLUESKY_APP_PASSWORD=xxxx-xxxx-xxxx-xxxx
+```
+
+4. Post from the command line:
+
+```bash
+python scripts/post_bluesky.py published/YYYY-MM-DD-slug-bluesky-post.txt
+```
 
 ## Workflow
 
-1. **Draft** — write markdown in `drafts/`
-2. **Generate** — run `/substack-post <slug>` to produce Substack-ready article + LinkedIn teaser
-3. **Preview** — run `python scripts/preview.py published/YYYY-MM-DD-slug-substack.md`
-4. **Publish** — copy-paste from browser preview into Substack's editor
-5. **Promote** — post LinkedIn teaser with Substack URL in the first comment
+| Command | What it does |
+| --- | --- |
+| `/substack-post <slug>` | Generate Substack article + LinkedIn, Facebook, Bluesky teasers |
+| `/linkedin-post <slug>` | Regenerate LinkedIn teaser only |
+| `/rewrite-post <slug>` | Regenerate all derivatives after editing the source |
 
-## Setup
+## Distribution Channels
 
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install markdown
-```
+| Platform | Method | Details |
+| --- | --- | --- |
+| **Substack** | Copy-paste from preview | Canonical publication home |
+| **LinkedIn** | Copy-paste text, URL in first comment | Professional teaser |
+| **Facebook** | Copy-paste text (URL in body) | Personal/casual teaser |
+| **Bluesky** | Script (`post_bluesky.py`) or manual | Short post with link card |
 
-## Content Firewall
-
-This repo is for **personal, independent writing** only. DeeperPoint content belongs in the [DeeperPointBlogging](https://github.com/DeeperPoint/DeeperPointBlogging) repo and publishes to [deeperpoint.com/blog](https://deeperpoint.com/blog/).
+See [GEMINI.md](GEMINI.md) for full workflow details, formatting rules, and content guidelines.
