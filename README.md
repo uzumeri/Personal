@@ -38,6 +38,7 @@ python scripts/post_bluesky.py published/YYYY-MM-DD-slug-bluesky-post.txt
 | Command | What it does |
 | --- | --- |
 | `/substack-post <slug>` | Generate Substack article + LinkedIn, Facebook, Bluesky teasers |
+| `/hero-image <slug>` | Generate or regenerate the hero image for a post |
 | `/linkedin-post <slug>` | Regenerate LinkedIn teaser only |
 | `/rewrite-post <slug>` | Regenerate all derivatives after editing the source |
 

@@ -1,12 +1,7 @@
-<!--Copyright (c) 2026 Mustafa Uzumeri. All rights reserved.-->
+# Seventy Years of Trust, Gone in Twelve Months
+### The United States spent seventy years building the most powerful alliance network in human history. Donald Trump has dismantled it in one year—and the real damage isn't to treaties, it's to trust
 
----
-title: "Seventy Years of Trust, Gone in Twelve Months"
-date: 2026-03-16
-tags: [opinion, trade, strategy, leadership, canada]
-summary: The United States spent seventy years building the most powerful alliance network in human history. Donald Trump has dismantled it in one year—and the real damage isn't to treaties, it's to trust.
-estimated-read: 5 min read
----
+![Hero Image](images/2026-03-16-seventy-years-of-trust-hero.png)
 
 There is a thought experiment I keep returning to.
 
@@ -64,12 +59,23 @@ None of this is happening because these nations *want* to decouple from the Unit
 
 The irony is staggering. The administration's stated goal is to make America stronger. But the direct, measurable consequence of its actions is that every ally is now investing in reducing its dependence on America. The alliances are not being strengthened—they are being replaced. The influence is not being preserved—it is being forfeited. And the trust is not being renegotiated—it is being written off.
 
+It hasn't taken long for the chickens to come home to roost. Donald Trump is currently asking for help from (former) allies to re-open the Strait of Hormuz, even as his administration and Netanyahu continue to fuel the crisis and Iranian resistance by bombing Iran on a daily basis.
+
+So far, all of those prior allies and related stakeholders are refusing to help. In the past, many or most would have contributed something to aid the United States. But that help doesn't seem to be forthcoming now that Trump has systematically betrayed their trust across so many issues. The bill for a transactional foreign policy is coming due, and it turns out, no one is willing to extend the United States credit.
+
 ## The Engineering Lesson
 
-I work in market design. In my field, trust is infrastructure—as critical as any database or matching algorithm. You can build a technically perfect marketplace, but if participants don't trust the system, no one shows up. And if they show up and trust is betrayed, they don't come back. They build their own system. They route around you.
+I have worked in business for nearly 50 years. In my experience, trust is infrastructure—as critical as any database or matching algorithm. You can build a technically perfect product or marketplace, but if participants don't trust the system, no one shows up. And if they show up and trust is betrayed, they don't come back. They build their own system. They route around you.
 
 That is exactly what is happening to the United States on the world stage.
 
 Seventy years of trust, built by generations of diplomats, soldiers, and ordinary people who believed that commitments matter. Gone in twelve months, dismantled by someone who thinks loyalty is a sucker's game.
 
-The buildings are still standing. The treaties are still on file. But the business is dead.
+The buildings are still standing. The treaties are still on file. But the business is dying.
+
+What is your experience with managing systems that depend entirely on trust? Have you seen similar "ratchet effects" when that trust is broken? I'd love to hear your take.
+
+*Vic Uzumeri writes about market design, technology, and the craft of engineering useful systems. Subscribe at vicuzumeri.substack.com.*
+
+---
+**Substack Tags:** opinion, trade, strategy, leadership, canada
