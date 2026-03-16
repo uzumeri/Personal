@@ -3,11 +3,17 @@
 
 ![Hero Image](images/2026-03-16-seventy-years-of-trust-hero.png)
 
-There is a thought experiment I keep returning to.
+The United States is currently asking for help to secure the Strait of Hormuz—the vital Middle Eastern waterway through which twenty percent of global oil flows. As the conflict with Iran escalates, the administration needs warships to protect commercial vessels and keep the energy markets stable.
 
-Imagine you spent thirty years building a business. You nurtured relationships with suppliers, earned the loyalty of customers, became the anchor of a professional network that trusted your word. Then you handed the keys to someone who, in twelve months, insulted every supplier, threatened every customer, broke every handshake deal, and told the world that loyalty was for suckers.
+They have asked NATO members. They have asked Japan. They have asked South Korea, Australia, the United Kingdom, and half a dozen other nations. 
 
-The buildings would still be standing. The contracts might still be on file. But the business would be dead—because the thing that made it work was never the infrastructure. It was trust.
+And the answer, almost universally, has been no. 
+
+These are not neutral countries. These are the closest, oldest, most tightly integrated allies the United States has ever had. In any previous decade, they would have answered the call instantly. Today, they are flatly refusing.
+
+They are refusing because Donald Trump has spent the last twelve months systematically breaking the single most valuable asset the United States possesses on the global stage: trust.
+
+How could this happen?
 
 That is what has happened to the United States and its global alliance network.
 
@@ -59,9 +65,7 @@ None of this is happening because these nations *want* to decouple from the Unit
 
 The irony is staggering. The administration's stated goal is to make America stronger. But the direct, measurable consequence of its actions is that every ally is now investing in reducing its dependence on America. The alliances are not being strengthened—they are being replaced. The influence is not being preserved—it is being forfeited. And the trust is not being renegotiated—it is being written off.
 
-It hasn't taken long for the chickens to come home to roost. Donald Trump is currently asking for help from (former) allies to re-open the Strait of Hormuz, even as his administration and Netanyahu continue to fuel the crisis and Iranian resistance by bombing Iran on a daily basis.
-
-So far, all of those prior allies and related stakeholders are refusing to help. In the past, many or most would have contributed something to aid the United States. But that help doesn't seem to be forthcoming now that Trump has systematically betrayed their trust across so many issues. The bill for a transactional foreign policy is coming due, and it turns out, no one is willing to extend the United States credit.
+It hasn't taken long for the chickens to come home to roost. The bill for a transactional foreign policy is coming due, and it turns out, no one is willing to extend the United States credit.
 
 ## The Engineering Lesson
 
