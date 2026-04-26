@@ -30,7 +30,7 @@ SITE_ROOT = Path(__file__).resolve().parent.parent
 POSTS_DIR = SITE_ROOT / "blog" / "posts"
 BLOG_OUT = SITE_ROOT / "blog"
 SITE_URL = "https://uzumeri.com"
-FEED_TITLE = "Vic Uzumeri — Writing"
+FEED_TITLE = "Vic Uzumeri — Articles"
 FEED_DESC = "Independent professional writing on strategy, technology, trade, and the world."
 
 MD_EXTENSIONS = ["fenced_code", "tables", "toc", "smarty", "attr_list", "footnotes", "md_in_html"]
@@ -319,7 +319,7 @@ def buildPostCardHtml(meta, is_featured=False):
 def buildIndexPage(posts):
     """Generate the blog listing page."""
     head = PAGE_HEAD.format(
-        title="Writing",
+        title="Articles",
         description="Independent professional writing by Vic Uzumeri on strategy, technology, trade, and the world.",
         og_type="website",
         url=f"{SITE_URL}/blog/",
@@ -427,9 +427,9 @@ def buildIndexPage(posts):
       <div class="reveal text-center" style="margin-bottom: var(--space-2xl);">
         <div class="hero__badge" style="margin-bottom: var(--space-md);">
             <span class="hero__badge__dot"></span>
-            Personal Writing
+            Personal Articles
         </div>
-        <h1 class="section__title">Writing</h1>
+        <h1 class="section__title">Articles</h1>
         <p class="section__desc section__desc--centered">
           Independent professional writing published on
           <a href="https://uzumeri.substack.com/" target="_blank" rel="noopener">Substack</a>
