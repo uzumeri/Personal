@@ -1,0 +1,27 @@
+Everybody saw the tariffs. Everybody saw the sanctions. The Strait of Hormuz closing was on every screen for a week.
+
+What almost nobody sees is what happens next — because what happens next takes months.
+
+In operations management, there is a concept called the feedback time constant. It is the delay between a shock to a system and the moment when the consequences become visible. In a short supply chain, the delay might be days. In a global supply chain — raw materials crossing three continents, six ports, a dozen intermediaries — the time constant is weeks or months.
+
+This delay is the most dangerous feature of the current crisis.
+
+There is a theorem called Little's Law. It says: Inventory = Throughput × Flow Time. When you shut off a supply (sanctions, tariffs, a closed strait), the pipeline doesn't empty immediately. The oil already in tankers still arrives. The goods already in warehouses still sell at the old price. The system looks fine — for now.
+
+But buffers deplete. Little's Law is patient and arithmetic. When the pipeline inventory is consumed and nothing replaces it, the effects arrive not as a gradual adjustment but as a cliff.
+
+We saw this with COVID. The shocks of early 2020 didn't fully manifest until late 2020 and 2021. By the time the chip shortage hit auto manufacturing, most people had forgotten a virus in Wuhan had anything to do with it. The time constant was nine to twelve months.
+
+The same physics governs 2026. Sanctions on Russian energy. Sanctions on Iranian oil. Tariffs on Chinese manufacturing. Closure of the Strait of Hormuz. Each is a sledgehammer blow to the input end of supply chains that feed billions of people.
+
+The people who understand time constants — commodity traders, logistics planners, supply chain professionals — are already watching the dashboards. They can see buffer levels declining and shipping patterns rerouting.
+
+But these people do not set national policy. The people who set national policy are operating on feedback loops measured in news cycles — hours and days, not weeks and months. They are structurally incapable of seeing the slow wreck they are engineering, because it hasn't happened yet. It is still in the pipeline.
+
+What concerns me most is that multiple massive disruptions are being imposed simultaneously. Each might be absorbable alone. But sanctions plus tariffs plus a closed strait plus a land war in Europe is not a linear sum. The buffers that absorb one shock are the same buffers needed to absorb the next.
+
+Little's Law doesn't care about politics. It is arithmetic. And the arithmetic, right now, is very bad.
+
+Full article on my Substack — link in the first comment.
+
+#SupplyChain #Trade #Strategy #Economics #LittlesLaw
