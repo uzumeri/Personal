@@ -1,0 +1,27 @@
+Everything is getting harder to buy — but only if you're not a consumer.
+
+That's the part nobody talks about. In the B2C world, buying has never been easier. One-click checkout, same-day delivery, AI-powered recommendations. Consumer friction has been engineered almost to zero. The platforms that did this are genuine marvels.
+
+But step into the B2B world, and the story flips completely.
+
+In 1990, if you needed an industrial pump, you called a distributor, gave them a flow rate, and they shipped one. Today that pump has IoT monitoring, cybersecurity compliance, jurisdictional energy certifications, integration APIs, and a service contract with remote diagnostics. The pump is better. The act of buying it is dramatically harder.
+
+I call this the complexity ratchet. Technology improves the product but raises the knowledge barrier to trading it. And it only turns one way.
+
+Every generation of advancement adds a layer — software integration, environmental certification, regulatory compliance, cybersecurity requirements — that never gets removed. The next generation doesn't simplify. It stacks another layer on top.
+
+The consequence is that B2B markets are systematically thinning. Not because supply or demand dried up, but because the knowledge required to close a deal grew faster than the institutions that facilitate deals could adapt. Standards bodies run on multi-year cycles. Industry platforms standardize around the last generation of complexity. By the time they catch up, the products have moved on.
+
+This creates a distributional problem nobody tracks. Large firms with procurement teams, legal departments, and regulatory affairs can navigate complexity. Small firms cannot. A 50-person manufacturer making an excellent specialized component may never find its optimal customers — because the search and evaluation friction exceeds what a small commercial team can bear.
+
+The irony: the same tech companies that simplified consumer buying — Amazon, Google, Shopify — are largely indifferent to this problem. They optimized for standardized products at scale. The B2B world, where products resist standardization by nature, was left to fend for itself.
+
+The optimistic reading: AI might close this gap. Semantic matching across vocabularies, automated spec evaluation, regulatory mapping across jurisdictions. These are all solvable problems.
+
+The pessimistic reading: complexity outpaces adaptation, and market access concentrates among firms large enough to bear the costs — while an ever-growing population of viable products never finds its market.
+
+I wrote about this in detail — including the specific friction types (semantic, evaluation, trust, regulatory) and why they compound rather than add.
+
+Full article on my Substack — link in the first comment.
+
+#MarketDesign #AI #B2B #Technology #Innovation

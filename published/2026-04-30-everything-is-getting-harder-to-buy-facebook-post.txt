@@ -1,0 +1,9 @@
+Here's a paradox I can't stop thinking about: consumer buying has never been easier, but business buying has never been harder.
+
+One-click checkout, same-day delivery, AI recommendations — the B2C transaction has been engineered to near-zero friction. But in the B2B world, every product is accumulating layers of complexity (IoT, cybersecurity, regulatory compliance, integration APIs) that make the act of buying dramatically harder, even as the products themselves get better.
+
+I call it the complexity ratchet. It only turns one way. And it's quietly thinning out markets that used to work fine — not because supply or demand disappeared, but because the knowledge required to close a deal outpaced the institutions that facilitate deals.
+
+Who gets hurt? Small firms that can't afford the search and evaluation costs that complexity creates. The big firms navigate it. The specialists get locked out.
+
+I wrote about why this is happening and what might reverse it: https://vicuzumeri.substack.com
