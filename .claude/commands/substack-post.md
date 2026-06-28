@@ -1,0 +1,86 @@
+---
+description: Generate Substack article and social media teasers from an approved draft
+---
+
+## /substack-post — Draft → Substack + Social Teasers
+
+Use this workflow when you have a reviewed and approved draft and want to generate the Substack-ready article and all social media teasers.
+
+**Input:** `$ARGUMENTS` — the post slug.
+
+### How to invoke
+
+In chat, say one of these:
+
+> `/substack-post my-post-slug`
+> `/substack-post 2026-03-07-my-post-slug`
+
+You may pass either the bare slug or the full filename. The date prefix is optional.
+
+---
+
+### What the agent will do
+
+1. **Locate the source draft** — search `drafts/` and `published/` for a file matching the slug.
+
+2. **Move to `published/`** — if the draft is still in `drafts/`, copy it to `published/YYYY-MM-DD-slug.md` using the date from the YAML frontmatter. Ask the user whether to also remove the original from `drafts/`.
+
+3. **Generate a Hero Image** — call the **imagegen** MCP tool (`mcp__imagegen__*`) to create a minimalist, editorial-style illustration capturing the article's theme, requesting WebP output. The imagegen server writes into its configured `OUTPUT_DIR` with a timestamped filename; rename/move the newest result to `published/images/YYYY-MM-DD-slug-hero.webp` in the repository (creating the `images/` directory if necessary).
+
+4. **Generate a Substack-ready version** (`YYYY-MM-DD-slug-substack.md` in `published/`):
+   - Same content as the source draft with these modifications:
+   - **Remove YAML frontmatter** — Substack doesn't use it. Instead, the `title` becomes an H1 at the top (`# Title`). If the frontmatter contains a valuable `summary` or `subtitle`, place it immediately below the title as an H3 (`### Subtitle without trailing period`). This ensures it pastes natively as a subtitle in Substack's rich text editor. If the summary doesn't add value as a subtitle, omit it.
+   - **Insert Hero Image:** Below the subtitle (or title if no subtitle), insert the generated hero image using a markdown image tag: `![Hero Image](images/YYYY-MM-DD-slug-hero.webp)`
+   - **Convert tables to bullet lists** — Substack does not render markdown tables. Restructure them as descriptive bullet points or labeled paragraphs.
+   - **Use Unicode punctuation** — em-dashes `—`, curly quotes `""''`, ellipses `…`. No HTML entities.
+   - **Remove relative links** — replace with absolute URLs where appropriate, or remove if no suitable target exists.
+   - **Remove code blocks with language identifiers** — Substack renders plain code blocks poorly. Convert to indented plain text if the content is essential, or describe in prose.
+   - **Keep:** headings (H2/H3), bold, italic, block quotes, ordered/unordered lists, horizontal rules, absolute links.
+   - **End with a discussion CTA** — 1–2 sentences inviting comments or sharing ("What's your experience with this? I'd love to hear your take.").
+   - **Add footer:** A brief "About the author" line: *Vic Uzumeri writes about market design, technology, and the craft of engineering useful systems. Subscribe at vicuzumeri.substack.com.*
+   - **Append Substack Tags:** At the very end of the file, add a small section with the tags from the draft's frontmatter to serve as a reminder during the publishing flow (e.g. `---` followed by `**Substack Tags:** tag1, tag2...`). 
+
+5. **Generate a LinkedIn Feed Post** (`YYYY-MM-DD-slug-linkedin-post.txt` in `published/`):
+   - Plain text only — no markdown, no HTML.
+   - 400–500 words.
+   - Opening hook in the first 2 lines (shown before LinkedIn's "see more" cut).
+   - 5–8 short paragraphs separated by blank lines.
+   - Maximum 1–2 emoji, used purposefully.
+   - **Do NOT put the Substack URL in the post body** — LinkedIn's algorithm suppresses posts with external links.
+   - End with: "Full article on my Substack → link in the first comment" or similar phrasing.
+   - 3–5 hashtags at the end.
+
+6. **Generate a Facebook Feed Post** (`YYYY-MM-DD-slug-facebook-post.txt` in `published/`):
+   - Plain text only — no markdown, no HTML.
+   - 150–250 words — shorter and warmer than LinkedIn.
+   - Slightly more conversational tone — this is a personal account, not a professional network.
+   - Opening hook in the first 2 lines.
+   - 3–5 short paragraphs separated by blank lines.
+   - Maximum 1–2 emoji, used purposefully.
+   - **Include the Substack URL directly in the post body** — Facebook is less punitive about external links than LinkedIn.
+   - **No hashtags** — they are ineffective on Facebook.
+
+7. **Generate a Bluesky Post** (`YYYY-MM-DD-slug-bluesky-post.txt` in `published/`):
+   - Plain text only.
+   - **Maximum 280 characters** (Bluesky limit is 300, leave room for the link card).
+   - 1–2 sentences that capture the core insight.
+   - Include the Substack URL — Bluesky will generate a link card preview.
+   - No hashtags (Bluesky doesn't use them the same way).
+   - Punchy and direct — every character counts.
+
+8. **Confirm** all files are written. Display:
+   - The opening paragraph of the Substack version
+   - The full LinkedIn feed post for quick review
+   - The full Facebook post for quick review
+   - The full Bluesky post for quick review
+
+---
+
+### Notes
+
+- If derivative files already exist for this slug, ask the user whether to overwrite or skip.
+- The Substack version is intended for copy-paste: run `python scripts/preview.py published/YYYY-MM-DD-slug-substack.md`, then select-all → copy → paste into Substack's editor.
+- LinkedIn and Facebook teasers are manual copy-paste into the respective platforms.
+- Bluesky posts can be published via script: `python scripts/post_bluesky.py published/YYYY-MM-DD-slug-bluesky-post.txt`
+- Personal voice: first-person, conversational, reflective. This is Vic's independent writing, not DeeperPoint marketing.
+- Images cannot be embedded via paste — note `[IMAGE: description]` placeholders and add manually in Substack's editor.

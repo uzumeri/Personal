@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "imagegen": {
+      "command": "npx",
+      "args": ["-y", "imagegen-mcp-server"],
+      "env": {
+        "OUTPUT_DIR": "published/images"
+      }
+    }
+  }
+}
